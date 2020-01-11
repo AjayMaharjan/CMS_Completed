@@ -5,42 +5,62 @@
  */
 package Control;
 
-import CMS.DBConnection;
+
 import Model.Patients;
 import Repository.PatientRepository;
 import java.util.List;
-import java.util.Scanner;
+
 
 /**
  *
  * @author riku
  */
-public class PatientController {
-    public void login(String email) throws Exception{
+public class PatientController{
+//    public int loggedPatient;
+/*    
+    private PatientController(int patient_id) throws Exception{
+        loggedPatient=patient_id;
+    }
+*/
+    public boolean login(int patient_id,String email) throws Exception{
         PatientRepository patientRepository=new PatientRepository();
         List<Patients> patients=patientRepository.getPatients();
+        boolean temp=false;
         for(Patients patient: patients){
-            if(email.equals(patient.getEmail())){
-                System.out.println("yes");
+            if((email.equals(patient.getEmail()))&&(patient_id==patient.getPatient_id())){
+  //              loggedPatient=patient.getPatient_id();
+                temp=true;
                 break;
             }
         }
+        return temp;
         
     }
     
-    public void addPatient() throws Exception{
-        Scanner scan=new Scanner(System.in);
+    public void addPatient(String name,String address,long phone,String gender,String email) throws Exception{
         PatientRepository patientRepo=new PatientRepository();
-        System.out.print("Enter name:");
-        String name=scan.nextLine();
-        System.out.print("Enter address:");
-        String address=scan.nextLine();
-        System.out.print("Enter phone no:");
-        long phone=scan.nextInt();
-        System.out.print("Enter gender:");
-        String gender=scan.nextLine();
-        System.out.print("Enter email:");
-        String email=scan.nextLine();
         patientRepo.setPatients(name, address, phone, gender, email);
     }
+    
+/*    public void loggedPatient() throws Exception{
+        PatientRepository patientRepository=new PatientRepository();
+        List<Patients> patients=patientRepository.getPatients();
+        int patientId;
+        int patientName;
+        int patientAddress;
+        int patientPhone;
+        int patientGender;
+        int patientEmail;
+   /*     for(Patients patient: patients){
+            if((email.equals(patient.getEmail()))&&(patient_id==patient.getPatient_id())){
+                loggedPatient=patient.getPatient_id();
+                temp=true;
+                break;
+            }
+            }
+
+        }
+ */
+        
+    
 }

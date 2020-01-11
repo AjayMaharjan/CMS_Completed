@@ -4,28 +4,28 @@
  * and open the template in the editor.
  */
 package CMS;
-import Control.PatientController;
+//import Control.PatientController;
 import Repository.PatientRepository;
 import View.ClientView;
-import View.Home;
-
+//import View.Home;
 /**
  *
  * @author 
  */
 public class CMS {
-    public static void main(String args[])throws Exception{
+    public static void main(String args[])throws Exception{        
 /*        Home home=new Home();
        home.homePage();
 
         ClientView clientView=new ClientView();
         clientView.appointment();
-*/        
-           ClientView c=new ClientView();
-           c.mainPage();
+ */       
+           ClientView clientView=new ClientView();
+           clientView.mainPage();
+           
 /*
         PatientRepository p=new PatientRepository();
-        p.setPatients();
+        p.setPatients("Akaa Shahi","Teku,Kathmandu",9878098765,"Male","akaashahi22@gmail.com");
 
         PatientController p=new PatientController();
         p.login("amarmaharjann@gmail.com");

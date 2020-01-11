@@ -12,11 +12,12 @@ import java.util.*;
  * @author riku
  */
 public class AppointmentController {
-      public void requestAppointment(int docId) throws Exception{
+    public void requestAppointment(int doctor_id,int patient_id) throws Exception{
         Scanner scan=new Scanner(System.in);
         AppointmentRepository appointmentRepository=new AppointmentRepository();
         
-        appointmentRepository.setAppointment(docId);
+        appointmentRepository.setAppointment(doctor_id);
     }
+    
 
 }

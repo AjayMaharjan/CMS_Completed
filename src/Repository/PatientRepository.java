@@ -24,7 +24,6 @@ public class PatientRepository {
         Statement statement=connection.createStatement();
         ResultSet resultSet=statement.executeQuery("select * from patients");
         List<Patients> patients=new ArrayList<>();
-        
         while(resultSet.next()){
             Patients patient=new Patients(resultSet.getInt(1),resultSet.getString(2),resultSet.getString(3),resultSet.getInt(4),resultSet.getString(5),resultSet.getString(6));
             patients.add(patient);

@@ -26,7 +26,8 @@ public class ScheduleRepository {
         List<Schedules>schedules=new ArrayList<>();
         
         while(resultSet.next()){
-            Schedules schedule=new Schedules(resultSet.getInt(1),resultSet.getInt(2),resultSet.getInt(3),resultSet.getString(4));
+            Schedules schedule=new Schedules(resultSet.getInt(1),resultSet.getInt(2),resultSet.getInt(3),resultSet.getString(4),resultSet.getInt(5));
+            
             schedules.add(schedule);
         }
         DBConnection.closeConnection();

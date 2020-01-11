@@ -14,15 +14,25 @@ public class Schedules {
     private int doctor_id;
     private int department_id;
     private String shift;
-    public Schedules(int schedule_id,int doctor_id,int department_id,String shift){
+    private int seatAvailable;
+    public Schedules(int schedule_id,int doctor_id,int department_id,String shift,int seatAvailable){
         this.schedule_id=schedule_id;
         this.doctor_id=doctor_id;
         this.department_id=department_id;
         this.shift=shift;
+        this.seatAvailable=seatAvailable;
     }
 
     public int getSchedule_id() {
         return schedule_id;
+    }
+
+    public int getSeatAvailable() {
+        return seatAvailable;
+    }
+
+    public void setSeatAvailable(int seatAvailable) {
+        this.seatAvailable = seatAvailable;
     }
 
     public void setSchedule_id(int schedule_id) {

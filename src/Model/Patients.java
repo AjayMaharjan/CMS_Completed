@@ -13,10 +13,10 @@ public class Patients {
     private int patient_id;
     private String name;
     private String address;
-    private int phone_no;
+    private long phone_no;
     private String gender;
     private String email;
-    public Patients(int patients_id,String name,String address,int phone_no,String gender,String email){
+    public Patients(int patients_id,String name,String address,long phone_no,String gender,String email){
         this.patient_id=patients_id;
         this.name=name;
         this.address=address;
@@ -49,11 +49,11 @@ public class Patients {
         this.address = address;
     }
 
-    public int getPhone_no() {
+    public long getPhone_no() {
         return phone_no;
     }
 
-    public void setPhone_no(int phone_no) {
+    public void setPhone_no(long phone_no) {
         this.phone_no = phone_no;
     }
 
