@@ -15,7 +15,7 @@ public class Schedules {
     private int department_id;
     private String shift;
     private int seatAvailable;
-    public Schedules(int schedule_id,int doctor_id,int department_id,String shift,int seatAvailable){
+    public Schedules(int schedule_id, int doctor_id, int department_id, String shift, int seatAvailable){
         this.schedule_id=schedule_id;
         this.doctor_id=doctor_id;
         this.department_id=department_id;

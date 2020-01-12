@@ -7,8 +7,10 @@ package Control;
 
 import Model.Doctors;
 import Model.Patients;
+import Model.Schedules;
 import Repository.AppointmentRepository;
 import Repository.DoctorsRepository;
+import Repository.ScheduleRepository;
 import java.util.*;
 /**
  *
@@ -27,7 +29,8 @@ public class AppointmentController {
                     if(status.equals(doctor.getStatus()))
                     {
                         appointmentRepository.setAppointment(doctor_id, date, patient_id);
-                        stat=true;  
+                        stat=true;
+                        seatAvailableController(doctor_id);
                         break;
                     }else if(status.equals("Unavailable"))
                     {
@@ -41,5 +44,21 @@ public class AppointmentController {
         return stat;
 //        appointmentRepository.setAppointment(doctor_id);
     }
-
+    public void seatAvailableController(int doctor_id) throws Exception{
+        DoctorsRepository doctorRepository=new DoctorsRepository();
+        List<Doctors> doctors=doctorRepository.getDoctors();
+        ScheduleRepository scheduleRepository=new ScheduleRepository();
+        List<Schedules> schedules=scheduleRepository.getSchedules();
+        int schedule_id=0;
+        int seatAvailable=0;
+        for(Schedules schedule : schedules){
+                if(schedule.getDoctor_id()==doctor_id){
+                    //status=doctor.getStatus();
+                    seatAvailable=schedule.getSeatAvailable();
+                    seatAvailable--;
+                    schedule_id=schedule.getSchedule_id();
+                }
+        }
+        scheduleRepository.setSchedules(seatAvailable,schedule_id);
+    }
 }

@@ -13,9 +13,13 @@ import Control.AppointmentController;
 import java.util.*;
 import Control.PatientController;
 import Model.Appointments;
+import Model.Departments;
+import Model.Doctors;
 import Model.Patients;
 import Model.Schedules;
 import Repository.AppointmentRepository;
+import Repository.DepartmentRepository;
+import Repository.DoctorsRepository;
 import Repository.PatientRepository;
 import Repository.ScheduleRepository;
 import java.sql.SQLException;
@@ -24,21 +28,54 @@ public class ClientView {
     int loggedPatient_Id;
     String loggedPatientEmail;
     AppointmentRepository appointmentRepository=new AppointmentRepository();
-    public void viewSchedule()throws SQLException{
+    public void viewSchedule()throws Exception{
         ScheduleRepository scheduleRepository=new ScheduleRepository();
         List<Schedules> schedules=scheduleRepository.getSchedules();
-        System.out.println("Schedule_ID  :  Shift");
+        DoctorsRepository doctorRepository=new DoctorsRepository();
+        List<Doctors> doctors=doctorRepository.getDoctors();
+        DepartmentRepository departmentRepository=new DepartmentRepository();
+        List<Departments> departments=departmentRepository.getDepartments();
+//        String doctor;
+//         dep_id;
+        System.out.println("Schedule_ID  :  Shift  :  Doctor  :  Department");
+                
         for(Schedules schedule: schedules){
-            System.out.println("\t"+schedule.getSchedule_id()+"\t"+schedule.getShift());
+            System.out.print("\t"+schedule.getSchedule_id()+"\t"+schedule.getShift());
+            int doctor_id=schedule.getDoctor_id();
+            for(Doctors doctor: doctors){
+                if(doctor_id==doctor.getDoctor_id()){
+                    System.out.print("\t"+doctor.getName());
+                }
+                int department_id=doctor.getDepartment_id();
+                for(Departments department: departments){
+                    if(department_id==department.getDepartment_id()){
+                        System.out.println("\t"+ department.getName());
+                        break;
+                    }
+                    break;
+                }
+            }
+            
         }
     }
   
     public void viewAppointment() throws Exception{
 //        AppointmentRepository appointmentRepository=new AppointmentRepository();
         List<Appointments> appointments=appointmentRepository.getAppointment();
+        DoctorsRepository doctorsRepository= new DoctorsRepository();
+        List<Doctors> doctors=doctorsRepository.getDoctors();
+        int doctor_id=0;
         System.out.println("Appointment_id  :  Date :  Doctor");
         for(Appointments appointment: appointments){
-            System.out.println("\t"+appointment.getAppointment_id()+"\t"+appointment.getDate()+"\t"+appointment.getDoctor_id());
+            if(loggedPatient_Id==appointment.getPatient_id()){
+                System.out.print("\t"+appointment.getAppointment_id()+"\t"+appointment.getDate());
+                doctor_id=appointment.getDoctor_id();
+                for(Doctors doctor: doctors){
+                    if(doctor_id==doctor.getDoctor_id()){
+                        System.out.println("\t"+doctor.getName());
+                    }
+                }
+            }
         }
     }
     
