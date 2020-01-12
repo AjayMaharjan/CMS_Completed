@@ -11,14 +11,14 @@ package Model;
  */
 public class Appointments {
     private int appointment_id;
-//    private int date;  
+    private String date;  
     private int doctor_id;
     private int patient_id;
-    public Appointments(int appointment_id,int doctor_id,int patient_id/*,int date*/){
+    public Appointments(int appointment_id,String date,int doctor_id,int patient_id){
         this.appointment_id=appointment_id;
         this.doctor_id=doctor_id;
         this.patient_id=patient_id;
-//        this.date=date;  
+        this.date=date;  
     }
 
     public int getAppointment_id() {
@@ -28,15 +28,15 @@ public class Appointments {
     public void setAppointment_id(int appointment_id) {
         this.appointment_id = appointment_id;
     }
-/*
-    public int getDate() {
+
+    public String getDate() {
         return date;
     }
 
-    public void setDate(int date) {
+    public void setDate(String date) {
         this.date = date;
     }
-*/
+
     public int getDoctor_id() {
         return doctor_id;
     }

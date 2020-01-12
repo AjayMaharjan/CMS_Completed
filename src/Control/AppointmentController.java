@@ -5,19 +5,41 @@
  */
 package Control;
 
+import Model.Doctors;
+import Model.Patients;
 import Repository.AppointmentRepository;
+import Repository.DoctorsRepository;
 import java.util.*;
 /**
  *
  * @author riku
  */
 public class AppointmentController {
-    public void requestAppointment(int doctor_id,int patient_id) throws Exception{
+    public boolean requestAppointment(int doctor_id,String date,int patient_id) throws Exception{
         Scanner scan=new Scanner(System.in);
         AppointmentRepository appointmentRepository=new AppointmentRepository();
-        
-        appointmentRepository.setAppointment(doctor_id);
+        DoctorsRepository doctorRepository=new DoctorsRepository();
+        List<Doctors> doctors=doctorRepository.getDoctors();
+        String status="Available";
+        boolean stat=false;
+        for(Doctors doctor: doctors){
+                if(doctor_id==doctor.getDoctor_id()){
+                    if(status.equals(doctor.getStatus()))
+                    {
+                        appointmentRepository.setAppointment(doctor_id, date, patient_id);
+                        stat=true;  
+                        break;
+                    }else if(status.equals("Unavailable"))
+                    {
+                        stat=false;
+                        break;
+                    }
+                    
+                }
+                
+            }
+        return stat;
+//        appointmentRepository.setAppointment(doctor_id);
     }
-    
 
 }

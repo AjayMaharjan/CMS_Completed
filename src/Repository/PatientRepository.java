@@ -19,13 +19,13 @@ import java.util.List;
  * @author riku
  */
 public class PatientRepository {
-    public List<Patients> getPatients() throws SQLException{
+    public List<Patients> getPatients() throws Exception{
         Connection connection=DBConnection.getConnection();
         Statement statement=connection.createStatement();
         ResultSet resultSet=statement.executeQuery("select * from patients");
         List<Patients> patients=new ArrayList<>();
         while(resultSet.next()){
-            Patients patient=new Patients(resultSet.getInt(1),resultSet.getString(2),resultSet.getString(3),resultSet.getInt(4),resultSet.getString(5),resultSet.getString(6));
+            Patients patient=new Patients(resultSet.getInt(1),resultSet.getString(2),resultSet.getString(3),resultSet.getLong(4),resultSet.getString(5),resultSet.getString(6));
             patients.add(patient);
         }
         

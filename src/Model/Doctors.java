@@ -17,8 +17,9 @@ public class Doctors {
     private String address;
     private String gender;
     private int phone_no;
+    private String status;
     
-    public Doctors(int doctor_id,String name,int service_id,int department_id,String address,String gender,int phone_no){
+    public Doctors(int doctor_id,String name,int service_id,int department_id,String address,String gender,int phone_no,String status){
        this.doctor_id=doctor_id;
        this.name=name;
        this.service_id=service_id;
@@ -26,6 +27,15 @@ public class Doctors {
        this.address=address;
        this.gender=gender;
        this.phone_no=phone_no;
+       this.status=status;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public int getDoctor_id() {

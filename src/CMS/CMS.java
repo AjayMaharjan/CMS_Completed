@@ -14,14 +14,14 @@ import View.ClientView;
  */
 public class CMS {
     public static void main(String args[])throws Exception{        
-/*        Home home=new Home();
+ /*       Home home=new Home();
        home.homePage();
-
+/*
         ClientView clientView=new ClientView();
         clientView.appointment();
  */       
-           ClientView clientView=new ClientView();
-           clientView.mainPage();
+          ClientView clientView=new ClientView();
+          clientView.mainPage();
            
 /*
         PatientRepository p=new PatientRepository();
